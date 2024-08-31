@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjhnlq5incsb6"]
+[gd_scene load_steps=11 format=3 uid="uid://cjhnlq5incsb6"]
 
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_2olxo"]
 [ext_resource type="PackedScene" uid="uid://cskrmtvell0pr" path="res://src/scenes/example_map.tscn" id="2_f12km"]
@@ -9,8 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://c4d6o2s2nfbjv" path="res://src/music/El Ritmo de la Flauta.mp3" id="10_iwqgy"]
 [ext_resource type="PackedScene" uid="uid://do4cirrwmu1jq" path="res://src/scenes/action_button.tscn" id="10_ui0tm"]
 [ext_resource type="PackedScene" uid="uid://dh8uhcvfcok4l" path="res://src/scenes/enemy.tscn" id="11_aodp5"]
-[ext_resource type="PackedScene" uid="uid://bnj0j7ahyqy7s" path="res://src/scenes/door.tscn" id="11_s4yex"]
-[ext_resource type="PackedScene" uid="uid://f46frwqryefw" path="res://src/scenes/spikes.tscn" id="12_ifcgh"]
 [ext_resource type="Script" path="res://src/scripts/Camera.gd" id="13_udomv"]
 
 [node name="level" type="Node2D"]
@@ -63,7 +61,7 @@ position = Vector2(528, 7)
 
 [node name="throwable_bottles" type="Node" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player", "focus")]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(-131, -16)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
@@ -77,17 +75,8 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("13_udomv")
 player = NodePath("../character")
-focus = NodePath("../interactive_objects/Door")
 
 [node name="interactive_objects" type="Node" parent="."]
 
 [node name="Button" parent="interactive_objects" instance=ExtResource("10_ui0tm")]
-position = Vector2(1279, -91)
-action = "Hola mundoooooooooooooooooo"
-
-[node name="Door" parent="interactive_objects" instance=ExtResource("11_s4yex")]
-position = Vector2(1369, -108)
-scale = Vector2(1, 1.005)
-
-[node name="Spikes" parent="interactive_objects" instance=ExtResource("12_ifcgh")]
-position = Vector2(1093, -28)
+position = Vector2(-28, 21)

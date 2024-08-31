@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://rap3gpjbd3ky"]
+
+[ext_resource type="Texture2D" uid="uid://c17kywaureo6m" path="res://src/images/objects/GUI/pixel-art-world-map-background_1102-3926.jpg" id="1_xmcg5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6vab"]
+texture = ExtResource("1_xmcg5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6gd2"]
+bg_color = Color(0, 0.658824, 0.847059, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdydn"]
+bg_color = Color(0.352941, 0.862745, 0.941176, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n6vab")
+
+[node name="levels" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="levels"]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.703
+anchor_right = 0.3
+anchor_bottom = 0.703
+offset_left = -16.6
+offset_top = -16.094
+offset_right = 16.4
+offset_bottom = 15.906
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6gd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vdydn")
+
+[node name="Button2" type="Button" parent="levels"]
+anchors_preset = -1
+anchor_left = 0.223
+anchor_top = 0.41
+anchor_right = 0.223
+anchor_bottom = 0.41
+offset_left = -16.446
+offset_top = -16.18
+offset_right = 16.554
+offset_bottom = 15.82
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6gd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vdydn")
+
+[node name="Button3" type="Button" parent="levels"]
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.373
+anchor_right = 0.5
+anchor_bottom = 0.373
+offset_left = -16.998
+offset_top = -15.754
+offset_right = 15.0
+offset_bottom = 16.246
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6gd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vdydn")
+
+[node name="Button4" type="Button" parent="levels"]
+anchors_preset = -1
+anchor_left = 0.811
+anchor_top = 0.508
+anchor_right = 0.811
+anchor_bottom = 0.508
+offset_left = -16.6221
+offset_top = -15.984
+offset_right = 16.3779
+offset_bottom = 16.016
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6gd2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vdydn")

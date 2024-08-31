@@ -1,0 +1,194 @@
+[gd_scene load_steps=21 format=3 uid="uid://1lrcm2xppu1v"]
+
+[ext_resource type="Script" path="res://src/scripts/game_over_screen.gd" id="1_o7rop"]
+[ext_resource type="AudioStream" uid="uid://6uitq0n3fgq7" path="res://src/SFX/Select 1.wav" id="2_tje83"]
+[ext_resource type="AudioStream" uid="uid://b880gdo0l130c" path="res://src/music/Game Over menu.mp3" id="3_oedxv"]
+[ext_resource type="Texture2D" uid="uid://d127rbe7d1it1" path="res://src/images/character/nekito/nekito dance.png" id="4_wm0iu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_736lf"]
+bg_color = Color(0.878431, 0.443137, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym7rg"]
+bg_color = Color(0.905882, 0.556863, 0.372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp27g"]
+bg_color = Color(0.964706, 0.760784, 0.654902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpcm7"]
+font_size = 47
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmxlp"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73yke"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjofc"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3a4n"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drc5v"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dehm"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvjm8"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn6mq"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im715"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl7so"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lng4q"]
+atlas = ExtResource("4_wm0iu")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqp7w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmxlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73yke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjofc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3a4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drc5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvjm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn6mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im715")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl7so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lng4q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7rop")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.890196)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19
+anchor_top = 0.47
+anchor_right = 0.501
+anchor_bottom = 0.635
+offset_left = 2.61998
+offset_top = -0.0600128
+offset_right = 2.99796
+offset_bottom = -0.230011
+theme_override_styles/normal = SubResource("StyleBoxFlat_736lf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ym7rg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qp27g")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.224
+anchor_top = 0.488
+anchor_right = 0.721
+anchor_bottom = 0.488
+offset_left = 0.112
+offset_top = -34.016
+offset_right = 0.0479889
+offset_bottom = 33.984
+text = "Reload"
+label_settings = SubResource("LabelSettings_wpcm7")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19
+anchor_top = 0.677
+anchor_right = 0.504
+anchor_bottom = 0.841
+offset_left = 2.61998
+offset_top = -0.146027
+offset_right = -0.00799561
+offset_bottom = 0.181976
+theme_override_styles/normal = SubResource("StyleBoxFlat_736lf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ym7rg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qp27g")
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.488
+anchor_right = 0.872
+anchor_bottom = 0.5
+offset_left = -0.128002
+offset_top = -35.016
+offset_right = -0.0640259
+offset_bottom = 32.0
+text = "Quit game"
+label_settings = SubResource("LabelSettings_wpcm7")
+
+[node name="select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tje83")
+
+[node name="menu music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oedxv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(717, 238)
+scale = Vector2(7.78125, 8.15625)
+sprite_frames = SubResource("SpriteFrames_rqp7w")
+frame_progress = 0.957753
+
+[connection signal="pressed" from="Button" to="." method="_on_button_reload_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_quit_pressed"]

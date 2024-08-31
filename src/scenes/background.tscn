@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8e0jtgilovjq"]
+
+[ext_resource type="Script" path="res://src/scripts/background.gd" id="1_74mjd"]
+[ext_resource type="Texture2D" uid="uid://ciyu4xy8seadv" path="res://src/tilesets/Backgrounds/Sky.png" id="1_so8gk"]
+[ext_resource type="Texture2D" uid="uid://dfvdk0iokbtt5" path="res://src/tilesets/Backgrounds/Clouds.png" id="2_afl4w"]
+[ext_resource type="Texture2D" uid="uid://x0ubhnswak6t" path="res://src/tilesets/Backgrounds/Rock Mountains.png" id="3_cdeha"]
+[ext_resource type="Texture2D" uid="uid://yfia1srm468r" path="res://src/tilesets/Backgrounds/Grass Mountains.png" id="4_3rb1b"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_74mjd")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(144, -204)
+scale = Vector2(1.2, 1.2)
+motion_scale = Vector2(0, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+position = Vector2(-121.667, -2.5)
+scale = Vector2(2.61198, 1.20313)
+texture = ExtResource("1_so8gk")
+centered = false
+region_enabled = true
+region_rect = Rect2(-0.527, 0, 320, 320)
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+position = Vector2(144, -204)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(510, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="ParallaxLayer4"]
+texture_filter = 1
+position = Vector2(-149, -2)
+scale = Vector2(1.59375, 1.2)
+texture = ExtResource("2_afl4w")
+centered = false
+region_enabled = true
+region_rect = Rect2(-1.873, -1, 320, 320)
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(144, -204)
+scale = Vector2(1.2, 1.2)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(440, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="ParallaxLayer2"]
+texture_filter = 1
+position = Vector2(-125.833, 0)
+scale = Vector2(1.3776, 1.2)
+texture = ExtResource("3_cdeha")
+centered = false
+region_enabled = true
+region_rect = Rect2(-0.327, 0, 320, 316)
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+texture_filter = 1
+position = Vector2(144, -204)
+scale = Vector2(1.2, 1.2)
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(440, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="ParallaxLayer3"]
+texture_filter = 1
+position = Vector2(-128.333, 0)
+scale = Vector2(1.39063, 1.2)
+texture = ExtResource("4_3rb1b")
+centered = false
+metadata/_edit_use_anchors_ = true
