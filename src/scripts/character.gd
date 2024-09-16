@@ -99,7 +99,7 @@ func drink():
 		animation.travel("drink")
 		print("bebiendo")
 		Global.score -= 1
-	elif (Global.score>0 && Global.drink_count>3 && Global.life<3):
+	elif (Global.score>0 && Global.drink_count>10 && Global.life<3):
 		movement = false
 		animation.travel("wacareo")
 		print("wacareando")

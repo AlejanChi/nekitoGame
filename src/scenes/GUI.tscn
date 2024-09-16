@@ -28,7 +28,7 @@ border_color = Color(0, 0, 0, 1)
 texture = ExtResource("2_ho3px")
 
 [sub_resource type="LabelSettings" id="LabelSettings_mfuuf"]
-font_size = 40
+font_size = 30
 font_color = Color(0.305882, 0, 0.0941176, 1)
 
 [node name="GUI" type="CanvasLayer"]
@@ -54,36 +54,38 @@ label_settings = SubResource("LabelSettings_qsxt8")
 
 [node name="Panel" type="Panel" parent="MarginContainer/Node"]
 anchors_preset = -1
-anchor_top = 0.019
-anchor_right = 0.31
-anchor_bottom = 0.144
-offset_left = -11.0
-offset_top = -29.312
-offset_right = -0.119995
-offset_bottom = 37.688
+anchor_top = -0.05
+anchor_right = 0.385
+anchor_bottom = 0.236
+offset_left = -8.0
+offset_top = 5.0
+offset_right = -55.92
+offset_bottom = -16.12
 theme_override_styles/panel = SubResource("StyleBoxTexture_odtgn")
 
 [node name="heart1" type="Sprite2D" parent="MarginContainer/Node/Panel"]
-position = Vector2(72.4, 54.25)
-scale = Vector2(1.6, 1.6)
+position = Vector2(89, 44)
 texture = ExtResource("3_j3srx")
 
 [node name="heart2" type="Sprite2D" parent="MarginContainer/Node/Panel"]
-position = Vector2(150.4, 54.25)
-scale = Vector2(1.6, 1.6)
+position = Vector2(142, 44)
 texture = ExtResource("3_j3srx")
 
 [node name="heart3" type="Sprite2D" parent="MarginContainer/Node/Panel"]
-position = Vector2(228.4, 54.25)
-scale = Vector2(1.6, 1.6)
+position = Vector2(194, 44)
 texture = ExtResource("3_j3srx")
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Node/Panel"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 83.85
-offset_right = 282.0
-offset_bottom = 94.85
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.098
+anchor_top = 0.626
+anchor_right = 0.872
+anchor_bottom = 0.697
+offset_left = -1.186
+offset_top = 0.0259972
+offset_right = -0.104004
+offset_bottom = -0.00300598
 theme_override_styles/background = SubResource("StyleBoxFlat_tywnm")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2v6ok")
 show_percentage = false
@@ -91,33 +93,46 @@ show_percentage = false
 [node name="Node2" type="Node" parent="MarginContainer"]
 
 [node name="Panel" type="Panel" parent="MarginContainer/Node2"]
-offset_left = 1164.0
-offset_top = -20.0
-offset_right = 1571.0
-offset_bottom = 109.0
+anchors_preset = -1
+anchor_left = 0.628
+anchor_top = -0.048
+anchor_right = 1.011
+anchor_bottom = 0.26
+offset_left = 300.624
+offset_top = 9.16
+offset_right = 210.288
+offset_bottom = -29.2
 scale = Vector2(-1, 1)
 theme_override_styles/panel = SubResource("StyleBoxTexture_mpo0x")
 
-[node name="Label" type="Label" parent="MarginContainer/Node2"]
+[node name="Label" type="Label" parent="MarginContainer/Node2/Panel"]
 texture_filter = 1
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.888
-anchor_top = 0.1
-anchor_right = 0.98
-anchor_bottom = 0.1
-offset_left = 0.223938
-offset_top = -28.8
-offset_right = 0.039978
-offset_bottom = 29.2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 62.5
+offset_top = -24.5
+offset_right = 113.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1.004, 1.07089)
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "0000"
+text = "155"
 label_settings = SubResource("LabelSettings_mfuuf")
 horizontal_alignment = 2
+vertical_alignment = 2
+text_direction = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Node2"]
-position = Vector2(865, 44)
-scale = Vector2(2.10672, 2.20842)
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Node2/Panel"]
+position = Vector2(47, 45)
+rotation = -3.14159
+scale = Vector2(1.55551, -1.57846)
 texture = ExtResource("4_dmicv")
 hframes = 4
 vframes = 4

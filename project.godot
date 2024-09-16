@@ -22,8 +22,8 @@ Global="*res://src/scenes/global.tscn"
 
 [display]
 
-window/size/viewport_width=1002
-window/size/viewport_height=498
+window/size/viewport_width=792
+window/size/viewport_height=420
 window/size/resizable=false
 
 [input]

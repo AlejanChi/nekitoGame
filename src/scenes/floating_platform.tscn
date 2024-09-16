@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://txch1rc8ch17"]
+
+[ext_resource type="Script" path="res://src/scripts/floating_platform.gd" id="1_w7yqf"]
+[ext_resource type="Texture2D" uid="uid://b43fi4dywivkp" path="res://src/images/objects/interactive_objects/mobile_platform.png" id="2_p1q4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkdi1"]
+size = Vector2(30, 4)
+
+[sub_resource type="Gradient" id="Gradient_2lmlo"]
+offsets = PackedFloat32Array(0, 0.00990099, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.124295, 0, 0.797765, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0xw5d"]
+gradient = SubResource("Gradient_2lmlo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qmbjc"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0, 0.913725, 1, 0.521569)
+color_ramp = SubResource("GradientTexture1D_0xw5d")
+
+[node name="floating_platform" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_w7yqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p1q4t")
+
+[node name="RigidBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 15
+motion_mode = 1
+platform_floor_layers = 4294901775
+platform_wall_layers = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_qkdi1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 3)
+process_material = SubResource("ParticleProcessMaterial_qmbjc")

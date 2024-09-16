@@ -10,6 +10,7 @@ signal button_pressed_signal(action)
 
 func _on_area_2d_body_entered(body):
 	if !pressed:
+		print(action)
 		sprite.texture = button_pressed
 		$button_pressed.play()
 		pressed = true

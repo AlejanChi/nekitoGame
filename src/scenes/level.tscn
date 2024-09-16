@@ -1,51 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjhnlq5incsb6"]
+[gd_scene load_steps=9 format=3 uid="uid://cjhnlq5incsb6"]
 
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_2olxo"]
-[ext_resource type="PackedScene" uid="uid://cskrmtvell0pr" path="res://src/scenes/example_map.tscn" id="2_f12km"]
 [ext_resource type="PackedScene" uid="uid://bdajnlmbn3y78" path="res://src/scenes/character.tscn" id="3_08gpo"]
+[ext_resource type="PackedScene" uid="uid://rb6p0b5grx6" path="res://src/scenes/bg_desert_mountains.tscn" id="4_ytx0b"]
 [ext_resource type="PackedScene" uid="uid://c8e0jtgilovjq" path="res://src/scenes/background.tscn" id="5_4mkhb"]
-[ext_resource type="PackedScene" uid="uid://ldhjxv6h1a1y" path="res://src/scenes/bottle.tscn" id="8_bqflr"]
+[ext_resource type="PackedScene" uid="uid://ba88xykotfuwj" path="res://src/scenes/peru_test_map.tscn" id="7_ebobv"]
 [ext_resource type="PackedScene" uid="uid://b6xvs4q4qwx01" path="res://src/scenes/GUI.tscn" id="9_mgaxg"]
 [ext_resource type="AudioStream" uid="uid://c4d6o2s2nfbjv" path="res://src/music/El Ritmo de la Flauta.mp3" id="10_iwqgy"]
-[ext_resource type="PackedScene" uid="uid://do4cirrwmu1jq" path="res://src/scenes/action_button.tscn" id="10_ui0tm"]
-[ext_resource type="PackedScene" uid="uid://dh8uhcvfcok4l" path="res://src/scenes/enemy.tscn" id="11_aodp5"]
-[ext_resource type="PackedScene" uid="uid://bnj0j7ahyqy7s" path="res://src/scenes/door.tscn" id="11_s4yex"]
-[ext_resource type="PackedScene" uid="uid://f46frwqryefw" path="res://src/scenes/spikes.tscn" id="12_ifcgh"]
 [ext_resource type="Script" path="res://src/scripts/Camera.gd" id="13_udomv"]
 
 [node name="level" type="Node2D"]
 position = Vector2(0, 36)
 script = ExtResource("1_2olxo")
 
-[node name="TileMap" parent="." instance=ExtResource("2_f12km")]
-
 [node name="character" parent="." instance=ExtResource("3_08gpo")]
-position = Vector2(-131, -16)
+position = Vector2(178, -62)
+
+[node name="BG_desert_mountains" parent="." instance=ExtResource("4_ytx0b")]
 
 [node name="ParallaxBackground" parent="." node_paths=PackedStringArray("viewport") instance=ExtResource("5_4mkhb")]
+visible = false
 viewport = NodePath("../Camera2D")
 
 [node name="GUI" parent="." instance=ExtResource("9_mgaxg")]
-
-[node name="items" type="Node" parent="."]
-
-[node name="bottle" parent="items" instance=ExtResource("8_bqflr")]
-position = Vector2(87, 7)
-
-[node name="bottle2" parent="items" instance=ExtResource("8_bqflr")]
-position = Vector2(111, 8)
-
-[node name="bottle3" parent="items" instance=ExtResource("8_bqflr")]
-position = Vector2(212, -6)
-
-[node name="bottle4" parent="items" instance=ExtResource("8_bqflr")]
-position = Vector2(253, -5)
-
-[node name="bottle5" parent="items" instance=ExtResource("8_bqflr")]
-position = Vector2(347, -39)
-
-[node name="bottle6" parent="items" instance=ExtResource("8_bqflr")]
-position = Vector2(427, -46)
 
 [node name="music" type="Node" parent="."]
 
@@ -53,19 +30,11 @@ position = Vector2(427, -46)
 stream = ExtResource("10_iwqgy")
 autoplay = true
 
-[node name="enemies" type="Node" parent="."]
-
-[node name="Node2D" parent="enemies" instance=ExtResource("11_aodp5")]
-position = Vector2(772, 39)
-
-[node name="Node2D2" parent="enemies" instance=ExtResource("11_aodp5")]
-position = Vector2(528, 7)
-
 [node name="throwable_bottles" type="Node" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player", "focus")]
-position = Vector2(-131, -16)
-zoom = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(-151, -112)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -77,17 +46,6 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("13_udomv")
 player = NodePath("../character")
-focus = NodePath("../interactive_objects/Door")
 
-[node name="interactive_objects" type="Node" parent="."]
-
-[node name="Button" parent="interactive_objects" instance=ExtResource("10_ui0tm")]
-position = Vector2(1279, -91)
-action = "Hola mundoooooooooooooooooo"
-
-[node name="Door" parent="interactive_objects" instance=ExtResource("11_s4yex")]
-position = Vector2(1369, -108)
-scale = Vector2(1, 1.005)
-
-[node name="Spikes" parent="interactive_objects" instance=ExtResource("12_ifcgh")]
-position = Vector2(1093, -28)
+[node name="Node2D" parent="." instance=ExtResource("7_ebobv")]
+position = Vector2(-3, -36)

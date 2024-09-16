@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var score_marker = $MarginContainer/Node2/Label
+@onready var score_marker = $MarginContainer/Node2/Panel/Label
 @onready var life_marker = $MarginContainer/Label2
 @onready var drink_counter = $MarginContainer/Node/Panel/ProgressBar
 @onready var heart_full = preload("res://src/images/objects/GUI/heart_full.png")

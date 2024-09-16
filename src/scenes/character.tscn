@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bdajnlmbn3y78"]
+[gd_scene load_steps=52 format=3 uid="uid://bdajnlmbn3y78"]
 
 [ext_resource type="Script" path="res://src/scripts/character.gd" id="1_gfdkp"]
 [ext_resource type="AudioStream" uid="uid://b5p6ybaqvnnl4" path="res://src/SFX/Bubble 1.wav" id="3_1fa8v"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://by74vxv4nryn" path="res://src/images/character/nekito/nekito walking.png" id="7_t2djv"]
 [ext_resource type="Texture2D" uid="uid://cotujlud768bx" path="res://src/images/character/nekito/arrojar botella.png" id="7_xxgp4"]
 [ext_resource type="AudioStream" uid="uid://dfr5q47arl0gf" path="res://src/SFX/Hit damage 1.wav" id="9_oyxgl"]
+[ext_resource type="Texture2D" uid="uid://bpc8wud6d17l6" path="res://src/images/objects/GUI/dust.png" id="11_tyn7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38q4w"]
 size = Vector2(21, 24)
@@ -159,6 +160,18 @@ tracks/11/path = NodePath("../SFX/drink:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../GPUParticles2D:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -458,6 +471,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_omb8r"]
 resource_name = "jump"
@@ -532,6 +557,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../GPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_x3d4m"]
@@ -781,6 +818,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_52auf"]
 _data = {
@@ -883,6 +932,17 @@ graph_offset = Vector2(0, 31.5291)
 [sub_resource type="LabelSettings" id="LabelSettings_84vfl"]
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bhbhq"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 49.67
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.3
+
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_mask = 15
 input_pickable = true
@@ -911,7 +971,7 @@ position = Vector2(18, -8)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("6_88dqs")
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 autoplay = "RESET"
@@ -942,6 +1002,16 @@ stream = ExtResource("9_oyxgl")
 
 [node name="drink" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_1fa8v")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-2, 13)
+scale = Vector2(0.0364648, 0.0230198)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_bhbhq")
+texture = ExtResource("11_tyn7g")
+lifetime = 0.8
+speed_scale = 2.0
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="animation_finished" from="Sprite2D/AnimationTree" to="." method="_on_animation_tree_animation_finished"]

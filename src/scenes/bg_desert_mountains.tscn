@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://rb6p0b5grx6"]
+
+[ext_resource type="Texture2D" uid="uid://dsnhkuhp6q6ga" path="res://src/tilesets/Backgrounds/BG_DesertMountains/background1.png" id="1_nvjuf"]
+[ext_resource type="Texture2D" uid="uid://ou0a85dcrk32" path="res://src/tilesets/Backgrounds/BG_DesertMountains/background2.png" id="2_vp5r3"]
+[ext_resource type="Texture2D" uid="uid://ds861j5w3rb1s" path="res://src/tilesets/Backgrounds/BG_DesertMountains/background3.png" id="3_pyey7"]
+[ext_resource type="Texture2D" uid="uid://dt7n7jnr2ywol" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud1.png" id="4_1yhc3"]
+[ext_resource type="Texture2D" uid="uid://ssmq58q4ttfm" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud2.png" id="5_g38c6"]
+[ext_resource type="Texture2D" uid="uid://bw6kdhn3jugd4" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud4.png" id="6_y3qq6"]
+[ext_resource type="Texture2D" uid="uid://xkjdxf67fxoo" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud3.png" id="7_gbc3r"]
+[ext_resource type="Texture2D" uid="uid://b3cksgnhe4qo7" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud8.png" id="8_1sn67"]
+[ext_resource type="Texture2D" uid="uid://n3m7j16idd5" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud6.png" id="9_bv5qw"]
+[ext_resource type="Texture2D" uid="uid://sgd81t77yjyr" path="res://src/tilesets/Backgrounds/BG_DesertMountains/cloud7.png" id="10_pyheb"]
+
+[node name="BG_desert_mountains" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(306, 73)
+motion_scale = Vector2(0, 0)
+motion_offset = Vector2(640, 0)
+motion_mirroring = Vector2(826, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(93, 0)
+scale = Vector2(1.29062, 1)
+texture = ExtResource("1_nvjuf")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(306, 65)
+motion_scale = Vector2(0.2, 0)
+motion_offset = Vector2(640, 0)
+motion_mirroring = Vector2(826, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+z_as_relative = false
+position = Vector2(93, 0)
+scale = Vector2(1.29062, 1)
+texture = ExtResource("2_vp5r3")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+position = Vector2(306, 101)
+motion_scale = Vector2(0.4, 0)
+motion_offset = Vector2(2, 0)
+motion_mirroring = Vector2(826, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(93, 0)
+scale = Vector2(1.29063, 1)
+texture = ExtResource("3_pyey7")
+
+[node name="Nubes1" type="ParallaxLayer" parent="."]
+position = Vector2(306, 73)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes1"]
+position = Vector2(124, -195)
+texture = ExtResource("4_1yhc3")
+
+[node name="Nubes2" type="ParallaxLayer" parent="."]
+position = Vector2(306, 73)
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes2"]
+position = Vector2(62, -111)
+texture = ExtResource("5_g38c6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Nubes2"]
+position = Vector2(186, -52)
+texture = ExtResource("6_y3qq6")
+
+[node name="Nubes3" type="ParallaxLayer" parent="."]
+position = Vector2(306, 73)
+motion_scale = Vector2(0.7, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes3"]
+position = Vector2(-167, -195)
+texture = ExtResource("7_gbc3r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Nubes3"]
+position = Vector2(-232, -254)
+texture = ExtResource("8_1sn67")
+
+[node name="Nubes4" type="ParallaxLayer" parent="."]
+position = Vector2(306, 73)
+motion_scale = Vector2(0.8, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes4"]
+position = Vector2(-82, -173)
+texture = ExtResource("6_y3qq6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Nubes4"]
+position = Vector2(-187, -102)
+texture = ExtResource("9_bv5qw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Nubes4"]
+position = Vector2(181, -241)
+texture = ExtResource("10_pyheb")

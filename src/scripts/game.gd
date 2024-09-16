@@ -7,7 +7,7 @@ var game_over_executed: bool = false  # Variable para controlar si la función y
 
 func _ready():
 	player.connect("throw_bottle", _on_throw_bottle)
-	$interactive_objects/Button.connect("button_pressed_signal", _on_action_button_active)
+
 
 func _on_throw_bottle(projectile, location):
 	var bottle = projectile.instantiate()
@@ -32,5 +32,3 @@ func game_over_screen():
 func _process(delta):
 	game_over_screen()
 
-func _on_action_button_active(action):
-	$interactive_objects/Door.open_door()

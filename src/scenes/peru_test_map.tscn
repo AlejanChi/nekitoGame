@@ -1,0 +1,199 @@
+[gd_scene load_steps=13 format=3 uid="uid://ba88xykotfuwj"]
+
+[ext_resource type="Script" path="res://src/scripts/peru_test_map.gd" id="1_1wfi5"]
+[ext_resource type="PackedScene" uid="uid://blt1flby7hpr5" path="res://src/scenes/peru_test_level.tscn" id="1_j1mrp"]
+[ext_resource type="PackedScene" uid="uid://do4cirrwmu1jq" path="res://src/scenes/action_button.tscn" id="2_pjb3o"]
+[ext_resource type="PackedScene" uid="uid://bnj0j7ahyqy7s" path="res://src/scenes/door.tscn" id="3_guppw"]
+[ext_resource type="PackedScene" uid="uid://f46frwqryefw" path="res://src/scenes/spikes.tscn" id="4_u5041"]
+[ext_resource type="PackedScene" uid="uid://dh8uhcvfcok4l" path="res://src/scenes/enemy.tscn" id="5_fskpm"]
+[ext_resource type="PackedScene" uid="uid://ldhjxv6h1a1y" path="res://src/scenes/bottle.tscn" id="6_rhvlq"]
+[ext_resource type="PackedScene" uid="uid://txch1rc8ch17" path="res://src/scenes/floating_platform.tscn" id="8_pkhql"]
+[ext_resource type="Texture2D" uid="uid://cuibx8c58y7jw" path="res://src/images/objects/GUI/brown_tree.png" id="9_c6665"]
+[ext_resource type="Texture2D" uid="uid://b5xt5ptbhqnii" path="res://src/images/objects/GUI/brown_tree_2.png" id="10_crt81"]
+
+[sub_resource type="Curve2D" id="Curve2D_0ibss"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1650.3, 134.769, 0, 0, 0, 0, 2033.59, 134.769, 0, 0, 0, 0, 1643.38, 134.769, 0, 0, 0, 0, 1643.38, 134.769)
+}
+point_count = 4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_382uc"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 38.86
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 1.5
+color = Color(0.847656, 0.625, 0.398438, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1wfi5")
+
+[node name="Peru_test_level" parent="." instance=ExtResource("1_j1mrp")]
+script = null
+
+[node name="interactive_objects" type="Node" parent="."]
+
+[node name="Button" parent="interactive_objects" instance=ExtResource("2_pjb3o")]
+position = Vector2(1902, 150)
+rotation = 1.5708
+action = "Hola mundoooooooooooooooooo"
+
+[node name="Door" parent="interactive_objects" instance=ExtResource("3_guppw")]
+position = Vector2(2389, 0)
+scale = Vector2(1, 1.005)
+
+[node name="Spikes" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(1376, 176)
+
+[node name="Spikes2" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(1406, 176)
+
+[node name="Spikes3" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(1436, 176)
+
+[node name="Spikes4" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(1911, 176)
+
+[node name="Spikes5" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(1943, 176)
+
+[node name="Spikes6" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(1975, 176)
+
+[node name="Spikes7" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(2007, 176)
+
+[node name="Spikes8" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(2039, 176)
+
+[node name="Spikes9" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(2070, 176)
+
+[node name="Spikes10" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(2101, 176)
+
+[node name="Spikes11" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(2132, 176)
+
+[node name="Spikes12" parent="interactive_objects" instance=ExtResource("4_u5041")]
+position = Vector2(2163, 176)
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="Node2D" parent="enemies" instance=ExtResource("5_fskpm")]
+position = Vector2(981, 19)
+
+[node name="Node2D2" parent="enemies" instance=ExtResource("5_fskpm")]
+position = Vector2(656, -13)
+
+[node name="items" type="Node" parent="."]
+
+[node name="bottle" parent="items" instance=ExtResource("6_rhvlq")]
+position = Vector2(218, -24)
+
+[node name="bottle2" parent="items" instance=ExtResource("6_rhvlq")]
+position = Vector2(243, -19)
+
+[node name="bottle3" parent="items" instance=ExtResource("6_rhvlq")]
+position = Vector2(270, -23)
+
+[node name="bottle4" parent="items" instance=ExtResource("6_rhvlq")]
+position = Vector2(296, -19)
+
+[node name="bottle5" parent="items" instance=ExtResource("6_rhvlq")]
+position = Vector2(1311, -56)
+
+[node name="bottle6" parent="items" instance=ExtResource("6_rhvlq")]
+position = Vector2(828, -57)
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Platforms"]
+position = Vector2(707.356, -13.72)
+scale = Vector2(0.722683, 0.346667)
+curve = SubResource("Curve2D_0ibss")
+
+[node name="floating_platform" parent="Platforms/Path2D" instance=ExtResource("8_pkhql")]
+position = Vector2(1650.3, 134.769)
+scale = Vector2(1.99652, 2.05842)
+
+[node name="decorative" type="Node" parent="."]
+
+[node name="BrownTree" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(458, -46)
+texture = ExtResource("9_c6665")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")
+
+[node name="BrownTree2" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(508, -43)
+texture = ExtResource("10_crt81")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree2"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")
+
+[node name="BrownTree3" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(645, -45)
+scale = Vector2(0.824075, 1.04839)
+texture = ExtResource("9_c6665")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree3"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")
+
+[node name="BrownTree4" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(1093, -13)
+texture = ExtResource("10_crt81")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree4"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")
+
+[node name="BrownTree5" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(1473, -138)
+scale = Vector2(-1, 1)
+texture = ExtResource("10_crt81")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree5"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")
+
+[node name="BrownTree6" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(1680, -29)
+scale = Vector2(0.824075, 1.04839)
+texture = ExtResource("9_c6665")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree6"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")
+
+[node name="BrownTree7" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(2269, -12)
+scale = Vector2(-0.824, 1.048)
+texture = ExtResource("9_c6665")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree7"]
+position = Vector2(-4, -6)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_382uc")

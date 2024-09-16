@@ -35,6 +35,7 @@ func _physics_process(delta):
 	# Mueve el personaje si está en estado de movimiento
 	if not is_on_floor():
 		velocity.y = gravity*delta
+		animation.travel("in_air")
 	if not move_direction.x == 0:
 		sprite.scale.x = move_direction.x
 		if collision_damage_shape.position.x > 0:
@@ -116,3 +117,8 @@ func take_damage():
 		_stop_moving("die")
 		tween2.tween_property(sprite,"modulate",Color.BLACK,0.8)
 
+
+
+func _on_animation_tree_animation_finished(anim_name):
+	if (anim_name == "die"):
+		queue_free()

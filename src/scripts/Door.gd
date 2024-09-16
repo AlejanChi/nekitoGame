@@ -14,6 +14,7 @@ func _on_player_entered(body):
 		_next_level_travel()
 
 func open_door():
+	print("Ejecutando funcion open_door")
 	animation.play("open_door")
 
 

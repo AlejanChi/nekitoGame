@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhc7fs04r8q1f"]
+[gd_scene load_steps=8 format=3 uid="uid://dhc7fs04r8q1f"]
 
 [ext_resource type="Script" path="res://src/scripts/menu_index.gd" id="1_0i5dj"]
+[ext_resource type="PackedScene" uid="uid://rb6p0b5grx6" path="res://src/scenes/bg_desert_mountains.tscn" id="2_hl3ku"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jve1o"]
-bg_color = Color(0.207843, 0.207843, 0.207843, 0.898039)
+bg_color = Color(0.207843, 0.207843, 0.207843, 0.337255)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2sk8"]
 bg_color = Color(0.12549, 0.490196, 0.713726, 1)
@@ -97,7 +98,13 @@ text = "INICIAR"
 label_settings = SubResource("LabelSettings_ocvii")
 horizontal_alignment = 1
 
+[node name="Camera2D" type="Camera2D" parent="Panel"]
+anchor_mode = 0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="BG_desert_mountains" parent="." instance=ExtResource("2_hl3ku")]
+visible = false
 
 [connection signal="pressed" from="Panel/Button2" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_start_pressed"]
