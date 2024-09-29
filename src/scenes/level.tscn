@@ -35,6 +35,10 @@ autoplay = true
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(-151, -112)
 zoom = Vector2(1.5, 1.5)
+limit_left = -289
+limit_top = -459
+limit_right = 3501
+limit_bottom = 305
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true

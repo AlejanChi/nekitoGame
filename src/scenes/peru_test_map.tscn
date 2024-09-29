@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ba88xykotfuwj"]
+[gd_scene load_steps=22 format=3 uid="uid://ba88xykotfuwj"]
 
 [ext_resource type="Script" path="res://src/scripts/peru_test_map.gd" id="1_1wfi5"]
 [ext_resource type="PackedScene" uid="uid://blt1flby7hpr5" path="res://src/scenes/peru_test_level.tscn" id="1_j1mrp"]
@@ -6,14 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://bnj0j7ahyqy7s" path="res://src/scenes/door.tscn" id="3_guppw"]
 [ext_resource type="PackedScene" uid="uid://f46frwqryefw" path="res://src/scenes/spikes.tscn" id="4_u5041"]
 [ext_resource type="PackedScene" uid="uid://dh8uhcvfcok4l" path="res://src/scenes/enemy.tscn" id="5_fskpm"]
+[ext_resource type="PackedScene" uid="uid://fv8ev77xlnr3" path="res://src/scenes/casa_01.tscn" id="6_i8jp7"]
 [ext_resource type="PackedScene" uid="uid://ldhjxv6h1a1y" path="res://src/scenes/bottle.tscn" id="6_rhvlq"]
+[ext_resource type="PackedScene" uid="uid://c5bqdlavtucqb" path="res://src/scenes/pollompiro_tseench.tscn" id="7_tjoji"]
 [ext_resource type="PackedScene" uid="uid://txch1rc8ch17" path="res://src/scenes/floating_platform.tscn" id="8_pkhql"]
 [ext_resource type="Texture2D" uid="uid://cuibx8c58y7jw" path="res://src/images/objects/GUI/brown_tree.png" id="9_c6665"]
 [ext_resource type="Texture2D" uid="uid://b5xt5ptbhqnii" path="res://src/images/objects/GUI/brown_tree_2.png" id="10_crt81"]
+[ext_resource type="Texture2D" uid="uid://gpxu8xklpxp4" path="res://src/images/objects/GUI/poste_01.png" id="12_7xqwc"]
+[ext_resource type="Texture2D" uid="uid://iqyllkpn0uxi" path="res://src/images/objects/GUI/poste_02.png" id="13_16gg8"]
+[ext_resource type="Texture2D" uid="uid://cxoftq7k7l4vy" path="res://src/images/objects/GUI/poste_03.png" id="14_xbxy8"]
+[ext_resource type="Texture2D" uid="uid://ctqwnt4nocc0i" path="res://src/images/objects/GUI/poste_cableado.png" id="15_g6y7t"]
+[ext_resource type="Texture2D" uid="uid://bdfgr6p0p8cyd" path="res://src/images/objects/GUI/poste_left.png" id="16_prlc6"]
+[ext_resource type="Texture2D" uid="uid://cmhqpgsrk43ns" path="res://src/images/objects/GUI/poste_rigth.png" id="17_5yavd"]
 
 [sub_resource type="Curve2D" id="Curve2D_0ibss"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1650.3, 134.769, 0, 0, 0, 0, 2033.59, 134.769, 0, 0, 0, 0, 1643.38, 134.769, 0, 0, 0, 0, 1643.38, 134.769)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_4cgio"]
+_data = {
+"points": PackedVector2Array(-8.24069, 35.5848, 8.24069, -35.5848, 2745, -121, -15.3576, -17.6051, 15.3576, 17.6051, 2882, -186, 39.3306, -17.6051, -39.3306, 17.6051, 2838, -126, 0, 0, 0, 0, 2745, -121)
 }
 point_count = 4
 
@@ -39,12 +53,12 @@ script = null
 [node name="interactive_objects" type="Node" parent="."]
 
 [node name="Button" parent="interactive_objects" instance=ExtResource("2_pjb3o")]
-position = Vector2(1902, 150)
-rotation = 1.5708
+position = Vector2(3193, -208)
 action = "Hola mundoooooooooooooooooo"
 
 [node name="Door" parent="interactive_objects" instance=ExtResource("3_guppw")]
-position = Vector2(2389, 0)
+z_index = -1
+position = Vector2(3416, -63)
 scale = Vector2(1, 1.005)
 
 [node name="Spikes" parent="interactive_objects" instance=ExtResource("4_u5041")]
@@ -83,6 +97,9 @@ position = Vector2(2132, 176)
 [node name="Spikes12" parent="interactive_objects" instance=ExtResource("4_u5041")]
 position = Vector2(2163, 176)
 
+[node name="casa" parent="interactive_objects" instance=ExtResource("6_i8jp7")]
+position = Vector2(2746, -78)
+
 [node name="enemies" type="Node" parent="."]
 
 [node name="Node2D" parent="enemies" instance=ExtResource("5_fskpm")]
@@ -90,6 +107,12 @@ position = Vector2(981, 19)
 
 [node name="Node2D2" parent="enemies" instance=ExtResource("5_fskpm")]
 position = Vector2(656, -13)
+
+[node name="Pollompiro_tseench" parent="enemies" instance=ExtResource("7_tjoji")]
+position = Vector2(1299, -45)
+
+[node name="Pollompiro_tseench2" parent="enemies" instance=ExtResource("7_tjoji")]
+position = Vector2(2679, -48)
 
 [node name="items" type="Node" parent="."]
 
@@ -120,7 +143,15 @@ curve = SubResource("Curve2D_0ibss")
 
 [node name="floating_platform" parent="Platforms/Path2D" instance=ExtResource("8_pkhql")]
 position = Vector2(1650.3, 134.769)
-scale = Vector2(1.99652, 2.05842)
+scale = Vector2(2.079, 3.663)
+
+[node name="Path2D2" type="Path2D" parent="Platforms"]
+position = Vector2(-13, 1)
+curve = SubResource("Curve2D_4cgio")
+
+[node name="floating_platform" parent="Platforms/Path2D2" instance=ExtResource("8_pkhql")]
+position = Vector2(2745, -121)
+scale = Vector2(1.49, 1.29)
 
 [node name="decorative" type="Node" parent="."]
 
@@ -178,22 +209,60 @@ process_material = SubResource("ParticleProcessMaterial_382uc")
 
 [node name="BrownTree6" type="Sprite2D" parent="decorative"]
 z_index = -1
-position = Vector2(1680, -29)
-scale = Vector2(0.824075, 1.04839)
-texture = ExtResource("9_c6665")
+position = Vector2(3251, -246)
+texture = ExtResource("10_crt81")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree6"]
 position = Vector2(-4, -6)
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_382uc")
 
-[node name="BrownTree7" type="Sprite2D" parent="decorative"]
+[node name="Poste01" type="Sprite2D" parent="decorative"]
 z_index = -1
-position = Vector2(2269, -12)
-scale = Vector2(-0.824, 1.048)
-texture = ExtResource("9_c6665")
+position = Vector2(1670, -29)
+texture = ExtResource("12_7xqwc")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="decorative/BrownTree7"]
-position = Vector2(-4, -6)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_382uc")
+[node name="Poste02" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(1876, -16)
+texture = ExtResource("13_16gg8")
+
+[node name="Poste03" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(719, -49)
+texture = ExtResource("14_xbxy8")
+
+[node name="PosteCableado" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(120, -45)
+texture = ExtResource("15_g6y7t")
+
+[node name="PosteLeft" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(-79, -45)
+texture = ExtResource("16_prlc6")
+
+[node name="PosteRigth" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(319, -45)
+texture = ExtResource("17_5yavd")
+
+[node name="Poste04" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(2391, -15)
+texture = ExtResource("14_xbxy8")
+
+[node name="Poste05" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(2859, -62)
+texture = ExtResource("12_7xqwc")
+
+[node name="PosteLeft2" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(3129, -80)
+texture = ExtResource("16_prlc6")
+
+[node name="PosteRigth2" type="Sprite2D" parent="decorative"]
+z_index = -1
+position = Vector2(3327, -79)
+texture = ExtResource("17_5yavd")

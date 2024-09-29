@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cusp5dodjabg8"
+path="res://.godot/imported/Intro nekito.mp3-9a5bc07717bea647e91e929a4df09b15.mp3str"
+
+[deps]
+
+source_file="res://src/music/Intro nekito.mp3"
+dest_files=["res://.godot/imported/Intro nekito.mp3-9a5bc07717bea647e91e929a4df09b15.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
