@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 @export_category("Enemy movement")
 @export var SPEED = 50.0
-@export var JUMP_VELOCITY = -400.0
+#@export var JUMP_VELOCITY = -400.0
 @export var move_time: float = 4.0
 @export var stop_time: float = 2.0
 
@@ -80,6 +80,8 @@ func _stop_moving(case: String):
 		"die":
 			animation.travel("die")
 			move_direction = Vector2(0, 0)
+			await get_tree().create_timer(0.7)
+			queue_free()
 
 func _on_timer_timeout():
 	if is_moving:
@@ -117,8 +119,12 @@ func take_damage():
 		_stop_moving("die")
 		tween2.tween_property(sprite,"modulate",Color.BLACK,0.8)
 
+func paralized():
+	_stop_moving("idle")
+	var tween: Tween = get_tree().create_tween().set_loops(3)
+	tween.tween_property(sprite,"modulate",Color.TRANSPARENT,0.08)
+	tween.tween_property(sprite, "modulate", Color.WHITE,0.08)
 
-
-func _on_animation_tree_animation_finished(anim_name):
-	if (anim_name == "die"):
-		queue_free()
+#func _on_animation_tree_animation_finished(anim_name):
+#	if (anim_name == "die"):
+#		queue_free()

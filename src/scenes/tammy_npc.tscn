@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://qevlh5pr6a2o"]
+[gd_scene load_steps=7 format=3 uid="uid://qevlh5pr6a2o"]
 
 [ext_resource type="Texture2D" uid="uid://dxncpqp4rmqbc" path="res://src/images/character/tammy/Tammy idle (1).png" id="1_opo61"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fj87k"]
-radius = 9.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doh8h"]
+size = Vector2(10, 0)
 
 [sub_resource type="Animation" id="Animation_mn5ym"]
 length = 0.001
@@ -115,14 +114,20 @@ _data = {
 "idle_tammy": SubResource("Animation_gcj5r")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqevv"]
+size = Vector2(60, 25)
+
 [node name="Tammy_npc" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 19
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_opo61")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_fj87k")
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_doh8h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -130,3 +135,11 @@ autoplay = "idle_tammy"
 libraries = {
 "": SubResource("AnimationLibrary_vsx6y")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_wqevv")
+debug_color = Color(0.854902, 0.321569, 0.458824, 0.419608)

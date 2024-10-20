@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export_category("Enemy movement")
 @export var SPEED = 50.0
-@export var JUMP_VELOCITY = -400.0
+#@export var JUMP_VELOCITY = -400.0
 @export var move_time: float = 4.0
 @export var stop_time: float = 2.0
 
@@ -120,4 +120,8 @@ func cast_bullet():
 	cast.global_position = bullet_born.global_position
 	projectile_box.add_child(cast)
 
-
+func paralized():
+	_stop_moving("idle")
+	var tween: Tween = get_tree().create_tween().set_loops(3)
+	tween.tween_property(sprite,"modulate",Color.TRANSPARENT,0.08)
+	tween.tween_property(sprite, "modulate", Color.WHITE,0.08)

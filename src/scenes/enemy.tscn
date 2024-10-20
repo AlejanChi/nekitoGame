@@ -481,7 +481,7 @@ size = Vector2(26, 22)
 
 [node name="Node2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 51
 script = ExtResource("1_dignc")
 stop_time = 3.0
 

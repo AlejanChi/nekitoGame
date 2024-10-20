@@ -55,10 +55,14 @@ right={
 2d_render/layer_2="objects"
 2d_render/layer_3="enemies"
 2d_render/layer_4="npcs"
+2d_render/layer_5="enviroment"
+2d_render/layer_6="other"
 2d_physics/layer_1="player"
 2d_physics/layer_2="objects"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="npc"
+2d_physics/layer_5="enviroment"
+2d_physics/layer_6="other"
 
 [rendering]
 

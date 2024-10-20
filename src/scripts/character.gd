@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export_category("Movement")
-@export var SPEED = 100.0
-@export var JUMP_VELOCITY = -350.0
+@export var SPEED = 150.0
+@export var JUMP_VELOCITY = -400.0
 @export var movement:bool = true
 
 @onready var sprite = $Sprite2D
@@ -11,14 +11,16 @@ extends CharacterBody2D
 @onready var hitbox = $hitbox
 @onready var wacareo_mark = $wacareo_origin
 var mouse_position = Vector2() 
-
+var power = 1
 
 
 #VARIABLES PARA DISPARO DE PROYECTILES
 var projectile_instance = preload("res://src/scenes/proyectil.tscn")
-signal throw_bottle(projectile, location)
 var shoot_cursor = preload("res://src/images/objects/GUI/pointer_shoot-Sheet.png")
-
+var count = 0
+var increasing = true
+var timer = 0.0
+var time_between_counts = 1.0 / 100
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -33,7 +35,6 @@ func _ready():
 	Global.current_state = Global.states[0]
 
 func _process(delta):
-	state_machine()
 	mouse_position = get_global_mouse_position()
 func _physics_process(delta):
 	#GIRO DEL SPRITE
@@ -42,7 +43,6 @@ func _physics_process(delta):
 #	APLICACION DE LA GRAVEDAD
 	if not is_on_floor():
 		velocity.y += gravity * delta
-#		Global.current_state = Global.states[2]
 
 #	SALTO
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -57,7 +57,7 @@ func _physics_process(delta):
 		animation.travel("throw")
 		movement = false
 		var direction: Vector2 = (mouse_position-self.global_position).normalized().sign()
-		print(direction.x)
+		power_metrical(delta)
 		if direction.x==0:
 			direction.x+=1
 		sprite.scale.x = direction.x
@@ -69,29 +69,34 @@ func _physics_process(delta):
 		print("La posicion de la marca es: " + str(wacareo_mark.position.x))
 	if Input.is_action_just_released("throw") and is_on_floor() and (Global.score > 0):
 		animation.travel("throw_2")
+		$TextureProgressBar.visible = false
 		await get_tree().create_timer(0.8).timeout
 		movement = true
+		count = 0
 		Input.set_custom_mouse_cursor(null)
 	if (Global.life == 0):
 		death()
 	move_and_slide()
 
 
-func state_machine() -> void:
-	match animation.get_current_node():
-		"idle":
-			label.text = "STATE: idle"
-		"walk":
-			label.text = "STATE: walk"
-		"jump":
-			label.text = "STATE: jump"
-		"drink":
-			label.text = "STATE: drink"
-		"wacareo":
-			label.text = "SCORE: wacareo"
-		"damage":
-			label.text = "STATE: death"
-
+func power_metrical(updating):
+	timer += updating
+	if timer >= time_between_counts:
+		timer = 0.0
+		if increasing:
+			count += 1
+			if count >= 100:
+				count = 100  # Asegura que no pase de 100
+				increasing = false  # Cambia la dirección a decrecer
+		else:
+			count -= 1
+			if count <= 0:
+				count = 0  # Asegura que no pase de 0
+				increasing = true  # Cambia la dirección a incrementar
+		power = count
+	$TextureProgressBar.visible = true
+	$TextureProgressBar.value = power
+	print(power)
 
 func drink():
 	if (Global.score>0 && Global.drink_count<=3 && Global.life<3):
@@ -111,7 +116,22 @@ func drink():
 
 
 func throwing_bottle():
-	throw_bottle.emit(projectile_instance,wacareo_mark.global_position)
+	var direction: Vector2 = (mouse_position - wacareo_mark.global_position).normalized()
+#	throw_bottle.emit(projectile_instance,wacareo_mark.global_position, power, direction)
+	_on_throw_bottle(projectile_instance, wacareo_mark.global_position, power, direction)
+
+func _on_throw_bottle(projectile, location, power, direction):
+	var bottle = projectile.instantiate()
+	bottle.global_position = location
+
+#	bottle.power = power
+#	bottle.direction = direction
+	var force = direction * power
+	bottle.apply_impulse(force*10,direction)
+
+	# Añadimos el proyectil al contenedor de botellas
+	$projectile_box.add_child(bottle)
+	Global.score -= 1
 
 func move_controler(enabled:bool):
 	if(enabled):
@@ -154,5 +174,11 @@ func death():
 func _on_animation_tree_animation_finished(anim_name):
 	if(anim_name != "damage" || "throw"):
 		movement = true
-	elif (anim_name == "damage"):
-		pass
+
+
+func _on_re_jump_box_body_entered(body):
+	if(body.is_in_group("enemy") && !self.is_on_floor()):
+		print("saltando")
+		velocity.y = JUMP_VELOCITY
+		animation.travel("flip")
+		body.paralized()

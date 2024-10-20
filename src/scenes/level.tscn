@@ -14,7 +14,7 @@ position = Vector2(0, 36)
 script = ExtResource("1_2olxo")
 
 [node name="character" parent="." instance=ExtResource("3_08gpo")]
-position = Vector2(178, -62)
+position = Vector2(-124, -55)
 
 [node name="BG_desert_mountains" parent="." instance=ExtResource("4_ytx0b")]
 
@@ -36,8 +36,7 @@ autoplay = true
 position = Vector2(-151, -112)
 zoom = Vector2(1.5, 1.5)
 limit_left = -289
-limit_top = -459
-limit_right = 3501
+limit_right = 7803
 limit_bottom = 305
 position_smoothing_enabled = true
 drag_horizontal_enabled = true

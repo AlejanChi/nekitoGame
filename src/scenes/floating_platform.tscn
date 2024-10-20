@@ -32,14 +32,15 @@ script = ExtResource("1_w7yqf")
 texture = ExtResource("2_p1q4t")
 
 [node name="RigidBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 2
-collision_mask = 15
+collision_layer = 18
+collision_mask = 29
 motion_mode = 1
-platform_floor_layers = 4294901775
-platform_wall_layers = 13
+platform_floor_layers = 4294901791
+platform_wall_layers = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("RectangleShape2D_qkdi1")
+one_way_collision = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, 3)

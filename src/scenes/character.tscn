@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bdajnlmbn3y78"]
+[gd_scene load_steps=62 format=3 uid="uid://bdajnlmbn3y78"]
 
 [ext_resource type="Script" path="res://src/scripts/character.gd" id="1_gfdkp"]
 [ext_resource type="AudioStream" uid="uid://b5p6ybaqvnnl4" path="res://src/SFX/Bubble 1.wav" id="3_1fa8v"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://by74vxv4nryn" path="res://src/images/character/nekito/nekito walking.png" id="7_t2djv"]
 [ext_resource type="Texture2D" uid="uid://cotujlud768bx" path="res://src/images/character/nekito/arrojar botella.png" id="7_xxgp4"]
 [ext_resource type="AudioStream" uid="uid://dfr5q47arl0gf" path="res://src/SFX/Hit damage 1.wav" id="9_oyxgl"]
+[ext_resource type="Texture2D" uid="uid://bfu8vw8gk04u5" path="res://src/images/character/nekito/nekito flip.png" id="11_7bl7p"]
 [ext_resource type="Texture2D" uid="uid://bpc8wud6d17l6" path="res://src/images/objects/GUI/dust.png" id="11_tyn7g"]
+[ext_resource type="Texture2D" uid="uid://dm0mxi70ddnix" path="res://src/images/objects/GUI/demicircle_white.png" id="12_5ars4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38q4w"]
 size = Vector2(21, 24)
@@ -18,6 +20,9 @@ size = Vector2(21, 24)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i13uh"]
 radius = 6.0
 height = 23.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6qy6"]
+size = Vector2(14, 7)
 
 [sub_resource type="Animation" id="Animation_hlenn"]
 length = 0.001
@@ -366,6 +371,82 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_p2ere"]
+resource_name = "flip"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_7bl7p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0695319, 0.139064, 0.208596, 0.278128, 0.345483, 0.415015, 0.486723, 0.556255, 0.625787),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SFX/jump:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_l3tgk")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../SFX/jump:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_dg6tj"]
@@ -836,6 +917,7 @@ _data = {
 "RESET": SubResource("Animation_hlenn"),
 "damage": SubResource("Animation_0nlba"),
 "drink": SubResource("Animation_2ra4l"),
+"flip": SubResource("Animation_p2ere"),
 "hurt": SubResource("Animation_dg6tj"),
 "idle": SubResource("Animation_tb6ve"),
 "jump": SubResource("Animation_omb8r"),
@@ -850,6 +932,12 @@ animation = &"damage"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o223e"]
 animation = &"drink"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k0khv"]
+animation = &"flip"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pow3g"]
+animation = &"flip"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ricjd"]
 animation = &"hurt"
@@ -907,17 +995,30 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0fksj"]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xgbcc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gwjbt"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mmrtv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ntn5"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ex4s3"]
 states/damage/node = SubResource("AnimationNodeAnimation_0yw38")
 states/damage/position = Vector2(536, 209.718)
 states/drink/node = SubResource("AnimationNodeAnimation_o223e")
 states/drink/position = Vector2(372.053, 214.791)
+states/flip/node = SubResource("AnimationNodeAnimation_pow3g")
+states/flip/position = Vector2(508, -77.8631)
+"states/flip 2/node" = SubResource("AnimationNodeAnimation_k0khv")
+"states/flip 2/position" = Vector2(508.444, -153.912)
 states/hurt/node = SubResource("AnimationNodeAnimation_ricjd")
 states/hurt/position = Vector2(650.667, 157.529)
 states/idle/node = SubResource("AnimationNodeAnimation_nm7go")
 states/idle/position = Vector2(371.04, 100.174)
 states/jump/node = SubResource("AnimationNodeAnimation_cjwte")
-states/jump/position = Vector2(465.333, -19.2628)
+states/jump/position = Vector2(358.666, -62.7298)
 states/throw/node = SubResource("AnimationNodeAnimation_nxdk2")
 states/throw/position = Vector2(669.333, -37.4195)
 states/throw_2/node = SubResource("AnimationNodeAnimation_ba37b")
@@ -926,8 +1027,8 @@ states/wacareo/node = SubResource("AnimationNodeAnimation_5yry8")
 states/wacareo/position = Vector2(206.667, 215.68)
 states/walk/node = SubResource("AnimationNodeAnimation_nwgh3")
 states/walk/position = Vector2(561.333, 100.643)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_cxjfb"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_2x7hl"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_cb3yp"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_k5skf"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_yyd21"), "idle", "drink", SubResource("AnimationNodeStateMachineTransition_o2kbs"), "drink", "idle", SubResource("AnimationNodeStateMachineTransition_nmjfc"), "wacareo", "idle", SubResource("AnimationNodeStateMachineTransition_s73pq"), "idle", "wacareo", SubResource("AnimationNodeStateMachineTransition_ggoh2"), "idle", "throw", SubResource("AnimationNodeStateMachineTransition_8kf2g"), "idle", "damage", SubResource("AnimationNodeStateMachineTransition_00c6f"), "throw", "throw_2", SubResource("AnimationNodeStateMachineTransition_dg88c"), "throw_2", "idle", SubResource("AnimationNodeStateMachineTransition_mdgv7"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_0a0gm"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_0fksj")]
-graph_offset = Vector2(0, 31.5291)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_cxjfb"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_2x7hl"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_cb3yp"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_k5skf"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_yyd21"), "idle", "drink", SubResource("AnimationNodeStateMachineTransition_o2kbs"), "drink", "idle", SubResource("AnimationNodeStateMachineTransition_nmjfc"), "wacareo", "idle", SubResource("AnimationNodeStateMachineTransition_s73pq"), "idle", "wacareo", SubResource("AnimationNodeStateMachineTransition_ggoh2"), "idle", "throw", SubResource("AnimationNodeStateMachineTransition_8kf2g"), "idle", "damage", SubResource("AnimationNodeStateMachineTransition_00c6f"), "throw", "throw_2", SubResource("AnimationNodeStateMachineTransition_dg88c"), "throw_2", "idle", SubResource("AnimationNodeStateMachineTransition_mdgv7"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_0a0gm"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_0fksj"), "jump", "flip", SubResource("AnimationNodeStateMachineTransition_xgbcc"), "flip", "idle", SubResource("AnimationNodeStateMachineTransition_gwjbt"), "flip", "flip 2", SubResource("AnimationNodeStateMachineTransition_mmrtv"), "flip 2", "flip", SubResource("AnimationNodeStateMachineTransition_7ntn5")]
+graph_offset = Vector2(0, -202.579)
 
 [sub_resource type="LabelSettings" id="LabelSettings_84vfl"]
 font_color = Color(0, 0, 0, 1)
@@ -944,9 +1045,9 @@ scale_min = 0.1
 scale_max = 0.3
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
-collision_mask = 15
+collision_mask = 31
 input_pickable = true
-platform_floor_layers = 4294901763
+platform_floor_layers = 4294901777
 script = ExtResource("1_gfdkp")
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -964,6 +1065,13 @@ position = Vector2(0, 2.5)
 shape = SubResource("CapsuleShape2D_i13uh")
 one_way_collision = true
 debug_color = Color(0.996078, 0.0627451, 0, 0.419608)
+
+[node name="ReJumpBox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReJumpBox"]
+position = Vector2(0, 16.5)
+shape = SubResource("RectangleShape2D_h6qy6")
 
 [node name="wacareo_origin" type="Marker2D" parent="."]
 position = Vector2(18, -8)
@@ -1013,5 +1121,24 @@ texture = ExtResource("11_tyn7g")
 lifetime = 0.8
 speed_scale = 2.0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -12.0
+offset_right = -10.0
+offset_bottom = 12.0
+pivot_offset = Vector2(6.115, 11.865)
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("12_5ars4")
+texture_progress = ExtResource("12_5ars4")
+tint_under = Color(0.192157, 0.192157, 0.192157, 1)
+tint_progress = Color(1, 0.827451, 0, 1)
+radial_initial_angle = 127.9
+radial_fill_degrees = 287.0
+
+[node name="projectile_box" type="Node" parent="."]
+
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="ReJumpBox" to="." method="_on_re_jump_box_body_entered"]
 [connection signal="animation_finished" from="Sprite2D/AnimationTree" to="." method="_on_animation_tree_animation_finished"]

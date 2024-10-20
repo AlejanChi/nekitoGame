@@ -189,14 +189,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr4n2"]
-radius = 8.06226
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6gjk"]
-radius = 2.0
+radius = 1.0
 
 [node name="Node2D" type="RigidBody2D" groups=["projectile"]]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 22
 script = ExtResource("1_7ps26")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
